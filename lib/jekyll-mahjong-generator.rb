@@ -17,14 +17,15 @@ module JekyllMahjong
       svg_files.each do |svg_file|
         file_basename = File.basename(svg_file)
         file_source_path = File.join(target_source_directory, file_basename)
-        unless File.exist?(file_source_path)
-          FileUtils.cp(svg_file, file_source_path)
-        end
 
-        # ... and mark them to be included in the built _site
-        # lifesaver: https://stackoverflow.com/a/19890768/21452015
-        # documentation: https://www.rubydoc.info/gems/jekyll/Jekyll%2FStaticFile:initialize
-        site.static_files << Jekyll::StaticFile.new(site, site.source, relative_path, file_basename)
+        # only copy and mark for including if the files don't exist yet.
+        if !File.exist?(file_source_path)
+          FileUtils.cp(svg_file, file_source_path)
+          # IMPORTANT: mark to be included in the built _site
+          # lifesaver: https://stackoverflow.com/a/19890768/21452015
+          # documentation: https://www.rubydoc.info/gems/jekyll/Jekyll%2FStaticFile:initialize
+          site.static_files << Jekyll::StaticFile.new(site, site.source, relative_path, file_basename)
+        end
       end
     end
   end
