@@ -53,7 +53,7 @@ module JekyllMahjong
     private
     def svg_for_tile_group(tile_group)
       # get the tile suit blocks: "12p78s45p" => ["12p", "78s", "45p"]
-      tile_suit_blocks = tile_group.scan(/\d+[mspzMSPZ]/)
+      tile_suit_blocks = tile_group.scan(/\d+[mspzxMSPZX]/)
       # ["123p", "789s"] => ["<img />", "<img />" ...]
       svg_tiles = tile_suit_blocks.flat_map { |tile_suit_block| svg_for_tile_suit_block(tile_suit_block) }
 

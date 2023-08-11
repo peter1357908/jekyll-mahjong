@@ -27,3 +27,7 @@ The unit is `em` (i.e., with respect to the font size).
 # Usage and Demo
 
 See [here](https://peterish.com/riichi-docs/jekyll-mahjong-plugin/).
+
+# Credit
+
+Face-up Tile SVGs originally from this [Font](https://www.reddit.com/r/Mahjong/comments/qk7dca/tiles_svg_mahjong_color_font_based_on_tile/?utm_source=share&utm_medium=web2x&context=3). I ripped and reorganized the SVGs.

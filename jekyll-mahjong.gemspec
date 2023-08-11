@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'jekyll-mahjong'
-  s.version     = '1.0.2'
+  s.version     = '1.0.4'
   s.license     = 'MIT'
   s.summary     = 'Jekyll plugin to translate riichi mahjong text notation into svg images.'
   s.description = '"jekyll-mahjong" is a Jekyll plugin that offers a "mahjong" tag that will translate the text notation like "123p444s" into vector graphics of mahjong tiles. For detailed documentation, please see here: https://peterish.com/riichi-docs/jekyll-mahjong-plugin/.'
