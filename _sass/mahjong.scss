@@ -1,0 +1,40 @@
+$tile_height: 2em;
+$tile_width: $tile_height * 0.716;
+// the ratio of the outline's thickness to the tile's height is about 0.0368
+$negative_right_margin: -$tile_height * 0.034;
+$tile_group_space_width: $tile_height * 0.5;
+
+// these containers are surrounded by <span class='mahjong-tiles'></span>
+.mahjong-tile-container {
+  vertical-align: bottom;
+  margin-right: $negative_right_margin;
+
+  img{
+    // set width of image here to get correct display size
+    width: $tile_width;
+  }
+
+  // ensures that the last tile doesn't have a negative right margin
+  &:last-child {
+    margin-right: 0;
+  }
+
+  // set the sideways tile's width explicitly, then
+  // transform the tile image accordingly
+  &.sideways{
+    // set width of container to ensure the image width takes up as much space
+    width: $tile_height;
+    // need to be an inline-block otherwise `width` of container doesn't work
+    display: inline-block;
+    
+    img{
+      transform-origin: bottom left;
+      transform: rotate(-90deg) translateY(100%);
+    }
+  }
+}
+
+.space-between-tile-groups {
+  width: $tile_group_space_width;
+  display: inline-block;
+}

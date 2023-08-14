@@ -42,7 +42,7 @@ module JekyllMahjong
 
         # do nothing if there are no tiles in the last group
         unless svg_group.empty?
-          output += "<span class='mahjong-tile-group-margin' style='width: #{@group_margin}em; display: inline-block;' />"
+          output += "<span class='space-between-tile-groups' />"
           output += svg_group
         end
       end
@@ -60,9 +60,8 @@ module JekyllMahjong
       if svg_tiles.empty?
         return ""
       end
-      
-      # offset the last tile's right margin by styling the <span> tag
-      "<span class='mahjong-tiles' style='margin-right: #{-@tile_margin_right}em;'>#{svg_tiles.join}</span>"
+
+      "<span class='mahjong-tiles'>#{svg_tiles.join}</span>"
     end
 
     def svg_for_tile_suit_block(tile_suit_block)
@@ -71,17 +70,18 @@ module JekyllMahjong
     end
 
     def svg_for_tile(number, suit)
+      tile_name = "#{number}#{suit}"
       if suit == suit.upcase
         # sideways tile
-        tile_name = "c#{number}#{suit.downcase}"
-        style_prefix = "width"
+        file_name = "#{number}#{suit.downcase}"
+        class_name = " sideways"
       else
         # upright tile
-        tile_name = "#{number}#{suit}"
-        style_prefix = "height"
+        file_name = tile_name
+        class_name = ""
       end
 
-      "<img src='/assets/tiles/#{tile_name}.svg' style='#{style_prefix}: #{@tile_size}em; vertical-align: bottom; margin-right: #{@tile_margin_right}em' alt='#{tile_name}' class='mahjong-tile' />"
+      "<span class='mahjong-tile-container#{class_name}'><img src='/assets/tiles/#{file_name}.svg' alt='#{tile_name}' /></span>"
     end
   end
 end

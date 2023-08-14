@@ -15,11 +15,12 @@ end
 
 # Configuration (optional)
 
-In your `_config.yml`, you can optionally specify each tile's display size like this:
+In your `_config.yml`, you can optionally configure the following behaviors:
 
 ```yml
 jekyll-mahjong:
-  tile-size: "2" # default: "2"
+  overwrite_SCSS: true # default: false
+  overwrite_tiles: true # default: false
 ```
 
 The unit is `em` (i.e., with respect to the font size).
@@ -28,6 +29,10 @@ The unit is `em` (i.e., with respect to the font size).
 
 See [here](https://peterish.com/riichi-docs/jekyll-mahjong-plugin/).
 
-# Credit
+# Credits
 
+## Code Author
+[Peter Gao](peterish.com)
+
+## Uzaku Tile SVGs
 Face-up Tile SVGs originally from this [Font](https://www.reddit.com/r/Mahjong/comments/qk7dca/tiles_svg_mahjong_color_font_based_on_tile/?utm_source=share&utm_medium=web2x&context=3). I ripped and reorganized the SVGs.
