@@ -5,21 +5,6 @@ module JekyllMahjong
     def initialize(tag_name, input, tokens)
       super
       @input = input.strip
-
-      @tile_size = 2
-      @tile_margin_right = -@tile_size * 0.03
-      @group_margin = @tile_size * 0.6
-    end
-
-    def read_config(context)
-      config = context.registers[:site].config
-
-      tile_size = config.dig('jekyll-mahjong', 'tile-size')
-      if !tile_size.nil?
-        @tile_size = tile_size
-        @tile_margin_right = -@tile_size * 0.03
-        @group_margin = @tile_size * 0.5
-      end
     end
 
     def render(context)
@@ -27,8 +12,6 @@ module JekyllMahjong
       if @input.empty?
         return ""
       end
-      # overwrite the defaults with `_config.yml` definitions if they exist
-      read_config(context)
 
       # get the tile groups: "123p789s 1Z11z" => ["123p789s", "1Z11z"]
       tile_groups = @input.split(' ')
@@ -40,9 +23,12 @@ module JekyllMahjong
       for tile_group in tile_groups[1..-1]
         svg_group = svg_for_tile_group(tile_group)
 
-        # do nothing if there are no tiles in the last group
+        # add group to the output unless the group is empty
         unless svg_group.empty?
-          output += "<span class='space-between-tile-groups' />"
+          # add space between groups unless there is no previous group
+          unless output.empty?
+            output += "<span class='space-between-tile-groups' />"
+          end
           output += svg_group
         end
       end
