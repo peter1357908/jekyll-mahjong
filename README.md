@@ -15,7 +15,7 @@ end
 
 Then, you need to ensure that Jekyll sees the stylesheet `/_sass/mahjong.scss`. For many Jekyll themes, this just means adding the following line to your site source's `/assets/css/main.scss`:
 
-```
+```css
 @import "mahjong";
 ```
 
