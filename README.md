@@ -5,7 +5,7 @@ See [here](https://peterish.com/riichi-docs/jekyll-mahjong-plugin/) for usage no
 
 # Installation
 
-First, add `gem "jekyll-mahjong` to the `:jekyll_plugins` group in your `Gemfile` and run `bundle install`.
+First, add `gem "jekyll-mahjong"` to the `:jekyll_plugins` group in your `Gemfile` and run `bundle install`.
 
 ```ruby
 group :jekyll_plugins do
